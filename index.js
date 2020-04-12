@@ -36,6 +36,10 @@ client.on('message', async message => {
  
     console.log(user.hasPermission(['KICK_MEMBERS', 'BAN_MEMBERS']))
 
+    if(message.content.includes("fuck") && message.author.username !== "kickBot"){
+        message.channel.send("fuck you too " + message.author.username + "!");
+    }
+
     if(message.content.startsWith(`${prefix}kick`)) {
         if(message.author.username !== "SenorBob"){
             message.channel.send("You ain't kicking nobody");
@@ -51,12 +55,17 @@ client.on('message', async message => {
         } else {
             let member = message.mentions.members.first();
             member.ban().then((member) => {
-                message.channel.send("Bye Bitch");
+                message.channel.send("Adios");
             })
         }
     }
 
-    
+    if(message.author.username === "Nut Punch Wizard") {
+        let clown = '\u{1F921}';
+        message.react(clown)
+    }
+
+
     if(!message.content.startsWith(prefix)) return
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -75,7 +84,7 @@ client.on('message', async message => {
             .addField("**!flip:**", "Gives a random heads or tails option", false)
             .addField("**!meme:**", "Posts a random meme from one of a few different subreddits", false)
             .addField("**!clear \"number of messages to clear\"**:", "Deletes the specified number of messages from the channel in which the command was invoked", false)
-            .addField("**!kick | !ban:**", "A power that you cannot be trusted with", false)
+            .addField("**!kick | !ban:**", "A power that you degenerates cannot be trusted with", false)
             .setFooter(message.author.username, client.user.displayAvatarURL)
             .setTimestamp();
 
